@@ -20,13 +20,20 @@ while True:
     if new.lower() == "no":
         break
 
+with open("todo.txt", "w+") as todo_file:     # open todo.txt or create it
 
-print "Completed tasks: "
-for item in todo_dict:
-    if todo_dict[item] is True:         # if X == True. With "is" ->simplified
-        print "- " + item
+    print "Completed tasks: "
+    todo_file.write("Completed tasks:\n")         # write "completed tasks (headline) into the TXT file
+    for item in todo_dict:
+        if todo_dict[item] is True:         # if X == True. With "is" ->simplified
+            print "- " + item
+            todo_file.write("- " + item + "\n")         # add task into the TXT file
 
-print "Uncompleted tasks: "
-for item in todo_dict:
-    if todo_dict[item] is False:
-        print "- " + item
+    print "Incomplete tasks: "
+    todo_file.write("Incomplete tasks:\n")
+    for item in todo_dict:
+        if todo_dict[item] is False:
+            print "- " + item
+            todo_file.write("- " + item + "\n")
+
+
